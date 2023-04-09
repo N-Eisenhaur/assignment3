@@ -14,79 +14,18 @@
 
 
 
-   <!-- <script
-      src="https://code.jquery.com/jquery-2.1.1.min.js"
-      type="text/javascript"
-    ></script>
-    <script>
-      $(document).ready(function () {
-        $("#menu-expand-collapse").click(function () {
-          $("#main-navigation").toggle();
-        });
-      });
-    </script> -->
-
 
   </head>
 
 
   <body>
 
-
+  <?php include 'header.php'; ?>
  
 
 
-<nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href=""> <img src="imgs/paddle-white.png" alt="..." height="36"></a>
-
-
-        <!--This is used for your website branding. You can also include a logo image file here.-->
-
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <!--
-            navbar-toggler — Denotes the toggle button for the collapsed menu. The piece data-toggle="collapse" defines that this will turn to a hamburger menu, not to drop-down, which is the other option. It’s important that you define a data-target with a CSS id (defined by the #) and wrap a div with the same name around the actual navbar element.-->
-
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav"> <!--
-                navbar-nav — The class for the <ul> list element that holds the menu items. The latter are denoted with nav-item and nav-link.-->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Book Trip</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Admin Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
 
     
-
-		<!--<div id="menu-expand-collapse">
-			<img src="imgs/hamburger.png" width="25px" /> 
-		  </div>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav"> 
-                navbar-nav — The class for the <ul> list element that holds the menu items. The latter are denoted with nav-item and nav-link.
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Book Trip</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Admin Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    -->
 
 
 
@@ -109,6 +48,76 @@
             Role: $role<br><br>
        
             ";
+
+
+
+            //session start
+
+            
+            session_start();
+            
+          /*  if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                header("location: dashboard.php");
+                exit;
+            }*/
+            
+            //$fname = "";
+            //$lname = "";
+            
+            if (isset($_POST['First Name']) && isset($_POST['Last Name'])) {
+                if (!empty($_POST['First Name']) && !empty($_POST['Last Name'])) {
+                    $fname = $_POST['First Name'];
+                    $lname = $_POST['Last Name'];
+                }
+            }
+            
+
+
+//validaition
+
+            if (isset($_POST["submit"]) && $_POST["submit"] === "Submit") {
+
+                $formComplete = true;
+                $errorMessages = [];
+    
+                if (trim($fname) === "") {
+                    $formComplete = false;
+                    array_push($errorMessages, "First Name is missing");
+              /*  } else if (filter_var($fname, FILTER_VALIDATE_EMAIL) === false) {//change filter
+                    $formComplete = false;
+                    array_push($errorMessages, "First Name incorrectly filled");*/
+                }
+                if (trim($lname) === "") {
+                    $formComplete = false;
+                    array_push($errorMessages, "Last Name missing");
+                }
+                if (!in_array($role, ["Admin", "Manager" , "CEO"])) {
+                    $formComplete = false;
+                    array_push($errorMessages, "Role missing");
+                }
+              
+               
+                    
+                }
+            
+          
+
+                if ($formComplete) {
+                    echo "<div class=\"mb-3\">First Name: $fname<br>Last Name: $lname
+                    <br>
+                    <br>Role: $role<br> </div>"
+                   ;
+                } else {
+                    echo "<div class=\"mt-4 mb-3 text-danger\"><p class=\"fw-bold\">Validation errors:</p><ul>";
+                    foreach ($errorMessages as $errorMessage) {
+                        echo "<li>$errorMessage</li>";
+                    }
+                    echo "</ul></div>";
+                }
+            
+
+
+
         ?>
         <form method="post" action="" class="mt-4">
             <div class="mb-3">
@@ -144,11 +153,7 @@
 
 
 
-    </div>
-
-
-
-
+ </div>
 
 
 
@@ -156,9 +161,11 @@
    
 </div>
 
- <div class="footer">
-  Footer
 
-    </div>
+<?php include 'footer.php'; ?>
+
+
+
+
   </body>
 </html>
