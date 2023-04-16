@@ -23,7 +23,7 @@
 
      <div class="hban">
 
-<H1>Welcome to the New Account page.</H1>
+<H1>Welcome to the Lost Password </H1>
 
 
 
@@ -31,9 +31,9 @@
 
 
         <div class="mb-3">
-                <label for="email1" class="form-label">Email address</label>
-                <input type="email1" name="email1" id="email1"class="form-control">
-                <input type="hidden" name="mode" value="new-account">
+                <label for="pass" class="form-label">Password</label>
+                <input type="pass" name="pass" id="pass"class="form-control">
+                <input type="hidden" name="mode" value="lost-password">
             </div>
        
 

@@ -1,13 +1,4 @@
-<?php
 
-
-
-
-$email1_received = $_GET["email1"];
-
-
-
-?>
 
 <html>
 
@@ -23,24 +14,30 @@ $email1_received = $_GET["email1"];
 
 <?php
 
-if ($email1_received == "email1") {
-echo "You have made a new account";
+
+  $mode = $_GET["mode"];
+
+  if ($mode == "new-account") {
+      $email_received = $_GET["email1"];
+      $_SESSION["email1"] = $_GET["email1"];
+
+      echo "Account creation successful.";
 
 
-}
+  } elseif ($mode == "lost-password") {
+      $pass_received = $_GET["pass"];
+      $_SESSION["pass"] = $_GET["pass"];
 
-/*elseif ($role_received == "Manager") {
+      echo "New password sent.";
+  }
 
-  echo "<a href=\"#\"> Lost Password </a>";
-  echo "<a href=\"Isnt-working.php\"> Page Not Working </a>";
-
-}*/
 
 
 
 
 ?>
 
+<a href ="logout.php">Logout </a>
 
 
 </h2>

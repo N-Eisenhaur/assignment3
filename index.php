@@ -1,5 +1,13 @@
 
+<?php
 
+session_start();
+
+session_destroy();
+header('Location: index.php');
+exit();
+
+?>
 
 <!DOCTYPE html>
 
@@ -66,7 +74,7 @@
 
 
 
-<a href ="#">Logout </a>
+<a href ="logout.php">Logout </a>
 
 </div>
 

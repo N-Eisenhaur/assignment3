@@ -4,6 +4,9 @@
 session_start();
 
 $_SESSION["fname"] = $_GET["fname"];
+$_SESSION["lname"] = $_GET["lname"];
+$_SESSION["Role"] = $_GET["Role"];
+$_SESSION["Title"] = $_GET["Title"];
 
 
 
@@ -35,7 +38,7 @@ echo "<a href=\"Isnt-working.php\"> Page Not Working </a>";
 
 elseif ($role_received == "Manager") {
 
-  echo "<a href=\"#\"> Lost Password </a>";
+  echo "<a href=\"lost-password.php\"> Lost Password </a>";
   echo "<a href=\"Isnt-working.php\"> Page Not Working </a>";
 
 }
