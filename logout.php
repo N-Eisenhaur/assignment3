@@ -1,6 +1,11 @@
 <?php
 
-
+session_start();
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
 
 
 
@@ -24,10 +29,9 @@
 
 
 
-<form action="index.php" method="POST">
-    <input type="submit" value="Clear session" />
-</form>
-
+<form method="post">
+		<input type="submit" name="logout" value="Logout">
+	</form>
 
 
 
