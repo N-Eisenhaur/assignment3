@@ -25,47 +25,84 @@
 
 
 
-        <form method ="GET" action="problem.php" class="mt-4">
+        <form action="admin-confirm.php" class="mt-4">
 
 
 
-        <div class="mb-3">
-                <label for="Title" class="form-label">Title</label>
-                <select name="Title" id="Title" class="form-select">
-                    <option value="1">Mr</option>
-                    <option value="2">Ms</option>
-                </select>
-            </div>
-           
 
 
 
             <div class="mb-3">
-                <label for="First Name" class="form-label">First Name</label>
-                <input type="text" name="fname" id="fname" class="form-control">
+                <label for="Heading" class="form-label">Heading</label>
+                <input type="text" name="hing" id="hing" class="form-control">
             </div>
            
             <div class="mb-3">
-                <label for="Last Name" class="form-label">Last Name</label>
-                <input type="text" name="lname" id="lname" class="form-control">
+                <label for="TripDate" class="form-label">Trip Date</label>
+                <input type="text" name="trip" id="trip" class="form-control">
             </div>
 
 
+
+            
             <div class="mb-3">
-                <label for="Role" class="form-label">Role</label>
-                <select name="Role" id="Role" class="form-select">
-                    <option value="Admin">Admin</option>
-                    <option value="Manager">Manager</option>
-                    <option value="CEO">CEO</option>
-                </select>
+                <label for="Duration" class="form-label">Duration</label>
+                <input type="number" name="duration" id="duration" class="form-control">
             </div>
-           
+
+
+
+  
+            <div class="mb-3">
+                <label for="summary" class="form-label"> Summary </label>
+                <input type="text" name="summary" id="summary" class="form-control">
+            </div>
+
+
+
+
+
+
             <input type="submit" name="submit" value="Submit" class="btn btn-primary">
         </form>
 
 
+        <!--php code-->
+       
+        <?php
 
-<a href ="logout.php">Logout </a>
+            try {
+                error_log("Connecting to DB\n", 0);
+                $dbhost = 'localhost';
+                $dbname = 'Assignment 3';
+                $dbuser = '';
+                $dbpass = '';
+                $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+
+                $query = "SELECT Heading, TripDate, Duration, Summary FROM admindb";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                $stmt->bindColumn('Heading', $hing);
+                $stmt->bindColumn('TripDate', $trip);
+                $stmt->bindColumn('duration', $duration);
+                $stmt->bindColumn('summary', $summary);
+                /*while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
+                    echo "<tr>";
+                    echo "<td>" . $hing "</td>";
+                    echo "<td>" . $email . "</td>";
+                    echo "<td>" . $description . "</td>";
+                    echo "<td>" . $github_link . "</td>";
+                    echo "</tr>";
+                }*/
+
+            } catch (PDOException $e) {
+                echo "Error : " . $e->getMessage() . "<br/>";
+                error_log("Cannot connect to DB\n", 0);
+                die();
+            }
+
+        ?>
+        
 
 </div>
 
