@@ -1,11 +1,19 @@
+
+<?php include 'header.php'; ?>
+
+
 <?php
 session_start();
-$hing= $_SESSION["Heading"];
+$hing = $_SESSION["Heading"];
 $trip = $_SESSION["TripDate"];
 $duration = $_SESSION["Duration"];
 $summary = $_SESSION["summary"];
 
 
+$_SESSION["Heading"] = $hing;
+$_SESSION["TripDate"]= $trip;
+$_SESSION["duration"]= $duration;
+$_SESSION["summary"]= $summary;
 
     try {
         error_log("Connecting to DB\n", 0);
@@ -45,10 +53,11 @@ $summary = $_SESSION["summary"];
 ?>
 
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
+   
     <body>
+
+
+
         <label class="title">Confirm Form</label>
         <br>
         <label class="subtitle">Please confirm the following details, and click "Send" once all information is confirmed to be correct.</label>
@@ -68,5 +77,10 @@ $summary = $_SESSION["summary"];
             <input type="submit">
             <input type="button" value="Back" onclick="history.back()">
         </form>
+
+
+        <?php include 'footer.php'; ?>
+
+
     </body>
 </html>

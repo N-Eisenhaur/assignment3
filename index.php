@@ -73,7 +73,7 @@
 
             try {
                 error_log("Connecting to DB\n", 0);
-                $dbhost = 'localhost';
+                $dbhost = 'localhost:8888';
                 $dbname = 'Assignment 3';
                 $dbuser = '';
                 $dbpass = '';
