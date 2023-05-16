@@ -4,23 +4,21 @@
 
 <?php
 session_start();
-$hing = $_SESSION["Heading"];
-$trip = $_SESSION["TripDate"];
-$duration = $_SESSION["Duration"];
-$summary = $_SESSION["summary"];
 
 
-$_SESSION["Heading"] = $hing;
+$_SESSION["Heading"] = $_GET["hing"];
 $_SESSION["TripDate"]= $trip;
-$_SESSION["duration"]= $duration;
-$_SESSION["summary"]= $summary;
+$_SESSION["Duration"]= $duration;
+$_SESSION["Summary"]= $summary;
 
     try {
         error_log("Connecting to DB\n", 0);
-        $dbhost = 'localhost:8888';
-        $dbname = 'Assignment 3';
-        $dbuser = 'root';
-        $dbpass = '';
+        $dbhost = 'localhost';
+        $dbname = 'id20619639_assignment3';
+        $dbuser = 'id20619639_nate';
+        $dbpass = 'Three3333$';
+        $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+
         $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
 
@@ -28,7 +26,7 @@ $_SESSION["summary"]= $summary;
         $stmt = $pdo->prepare($sql);
 
         $pdo->beginTransaction();
-        $stmt->execute([$hing, $trip, $duration, $summary]);
+        $stmt->execute([hing, $trip, $duration, $summary]);
         $pdo->commit();
 
         ?>
@@ -64,7 +62,7 @@ $_SESSION["summary"]= $summary;
         <br>
         <div class="confirmDetail">
             <label class="detailHeader">Heading</label>
-            <label class="detailBody"><?=$hing?></label>
+            <label class="detailBody"><?=hing?></label>
             <label class="detailHeader">Trip Date</label>
             <label class="detailBody"><?=$trip?></label>
             <label class="detailHeader">Duration</label>

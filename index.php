@@ -25,7 +25,7 @@
 
 
 
-        <form action="admin-confirm.php" class="mt-4">
+        <form action="admin-confirm.php" method="GET" class="mt-4">
 
 
 
@@ -73,10 +73,10 @@
 
             try {
                 error_log("Connecting to DB\n", 0);
-                $dbhost = 'localhost:8888';
-                $dbname = 'Assignment 3';
-                $dbuser = '';
-                $dbpass = '';
+                $dbhost = 'localhost';
+                $dbname = 'id20619639_assignment3';
+                $dbuser = 'id20619639_nate';
+                $dbpass = 'Three3333$';
                 $pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
                 $query = "SELECT Heading, TripDate, Duration, Summary FROM admindb";
@@ -84,8 +84,8 @@
                 $stmt->execute();
                 $stmt->bindColumn('Heading', $hing);
                 $stmt->bindColumn('TripDate', $trip);
-                $stmt->bindColumn('duration', $duration);
-                $stmt->bindColumn('summary', $summary);
+                $stmt->bindColumn('Duration', $duration);
+                $stmt->bindColumn('Summary', $summary);
                 /*while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
                     echo "<tr>";
                     echo "<td>" . $hing "</td>";
