@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-$hing = "Heading";
-$trip = "TripDate";
-$duration = "Duration";
-$summary = "summary";
-
-
+$_SESSION["hing"] = "Heading";
+$_SESSION["trip"] = "TripDate";
+$_SESSION["duration"] = "Duration";
+$_SESSION["summary"] = "summary";
 
 
 

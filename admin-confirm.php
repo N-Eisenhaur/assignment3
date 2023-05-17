@@ -5,8 +5,9 @@ session_start();
  include 'header.php'; 
 
  $hing = $_SESSION["Heading"];
- $trip = $_SESSION["TripDate"];
- $duration = $_SESSION["Duration"];
+ $trip = $_SESSION["trip"];
+
+ $duration = $_SESSION["duration"];
  $summary = $_SESSION["summary"];
 
     try {
