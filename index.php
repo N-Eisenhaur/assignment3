@@ -1,4 +1,18 @@
+<?php
+session_start();
 
+$hing = "Heading";
+$trip = "TripDate";
+$duration = "Duration";
+$summary = "summary";
+
+
+
+
+
+
+
+?>
 
 <!DOCTYPE html>
 

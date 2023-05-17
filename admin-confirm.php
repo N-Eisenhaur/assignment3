@@ -1,15 +1,13 @@
-
-<?php include 'header.php'; ?>
-
-
 <?php
 session_start();
 
 
-$_SESSION["Heading"] = $_GET["hing"];
-$_SESSION["TripDate"]= $trip;
-$_SESSION["Duration"]= $duration;
-$_SESSION["Summary"]= $summary;
+ include 'header.php'; 
+
+ $hing = $_SESSION["Heading"];
+ $trip = $_SESSION["TripDate"];
+ $duration = $_SESSION["Duration"];
+ $summary = $_SESSION["summary"];
 
     try {
         error_log("Connecting to DB\n", 0);
@@ -26,7 +24,7 @@ $_SESSION["Summary"]= $summary;
         $stmt = $pdo->prepare($sql);
 
         $pdo->beginTransaction();
-        $stmt->execute([hing, $trip, $duration, $summary]);
+        $stmt->execute([$hing, $trip, $duration, $summary]);
         $pdo->commit();
 
         ?>
@@ -62,7 +60,7 @@ $_SESSION["Summary"]= $summary;
         <br>
         <div class="confirmDetail">
             <label class="detailHeader">Heading</label>
-            <label class="detailBody"><?=hing?></label>
+            <label class="detailBody"><?=$hing?></label>
             <label class="detailHeader">Trip Date</label>
             <label class="detailBody"><?=$trip?></label>
             <label class="detailHeader">Duration</label>
