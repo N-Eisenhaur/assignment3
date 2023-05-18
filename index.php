@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$_SESSION["hing"] = "Heading";
+$_SESSION["heading"] = "Heading";
 $_SESSION["trip"] = "TripDate";
 $_SESSION["duration"] = "Duration";
 $_SESSION["summary"] = "summary";
@@ -33,7 +33,7 @@ $_SESSION["summary"] = "summary";
 
      <div class="hban">
 
-<H1>Welcome to your IT suport system</H1>
+<H1>Please enter your information.</H1>
 
 
 
@@ -46,7 +46,7 @@ $_SESSION["summary"] = "summary";
 
             <div class="mb-3">
                 <label for="Heading" class="form-label">Heading</label>
-                <input type="text" name="hing" id="hing" class="form-control">
+                <input type="text" name="hing" id="heading" class="form-control">
             </div>
            
             <div class="mb-3">
@@ -94,7 +94,7 @@ $_SESSION["summary"] = "summary";
                 $query = "SELECT Heading, TripDate, Duration, Summary FROM admindb";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
-                $stmt->bindColumn('Heading', $hing);
+                $stmt->bindColumn('Heading', $heading);
                 $stmt->bindColumn('TripDate', $trip);
                 $stmt->bindColumn('Duration', $duration);
                 $stmt->bindColumn('Summary', $summary);

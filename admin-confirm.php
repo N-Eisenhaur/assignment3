@@ -4,9 +4,8 @@ session_start();
 
  include 'header.php'; 
 
- $hing = $_SESSION["Heading"];
+ $heading = $_SESSION["heading"];
  $trip = $_SESSION["trip"];
-
  $duration = $_SESSION["duration"];
  $summary = $_SESSION["summary"];
 
@@ -25,7 +24,7 @@ session_start();
         $stmt = $pdo->prepare($sql);
 
         $pdo->beginTransaction();
-        $stmt->execute([$hing, $trip, $duration, $summary]);
+        $stmt->execute([$heading, $trip, $duration, $summary]);
         $pdo->commit();
 
         ?>
@@ -55,25 +54,14 @@ session_start();
 
 
 
-        <label class="title">Confirm Form</label>
+        <label class="title">Confirmation Page</label>
         <br>
-        <label class="subtitle">Please confirm the following details, and click "Send" once all information is confirmed to be correct.</label>
+        <label class="subtitle">Please confirm the following details on the next page. </label>
         <br>
-        <div class="confirmDetail">
-            <label class="detailHeader">Heading</label>
-            <label class="detailBody"><?=$hing?></label>
-            <label class="detailHeader">Trip Date</label>
-            <label class="detailBody"><?=$trip?></label>
-            <label class="detailHeader">Duration</label>
-            <label class="detailBody"><?=$duration?></label>
-            <label class="detailHeader">Summary</label>
-            <label class="detailBody"><?=$summary?></label>
-        </div>
+       
         <br/>
-        <form action="dbsave.php">
-            <input type="submit">
-            <input type="button" value="Back" onclick="history.back()">
-        </form>
+        <a href="all-adventure.php">Confirm and Proceed</a>
+
 
 
         <?php include 'footer.php'; ?>
