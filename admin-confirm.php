@@ -4,10 +4,10 @@ session_start();
 
  include 'header.php'; 
 
- $heading = $_SESSION["heading"];
- $trip = $_SESSION["trip"];
- $duration = $_SESSION["duration"];
- $summary = $_SESSION["summary"];
+ $heading = $_GET["heading"];
+ $trip = $_GET["trip"];
+ $duration = $_GET["duration"];
+ $summary = $_GET["summary"];
 
     try {
         error_log("Connecting to DB\n", 0);
