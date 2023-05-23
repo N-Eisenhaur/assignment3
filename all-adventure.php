@@ -15,9 +15,9 @@ session_start();
 <html>
    
     <body>
-
+<table>
     <?php
-
+   
 try {
     error_log("Connecting to DB\n", 0);
     $dbhost = 'localhost';
@@ -34,12 +34,14 @@ try {
     $stmt->bindColumn('Duration', $duration);
     $stmt->bindColumn('Summary', $summary);
     while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
+     
         echo "<tr>";
         echo "<td>" . $heading . "</td>";
         echo "<td>" . $trip . "</td>";
         echo "<td>" . $duration . "</td>";
         echo "<td>" . $summary . "</td>";
         echo "</tr>";
+
     }
 
 } catch (PDOException $e) {
@@ -49,7 +51,7 @@ try {
 }
 
 ?>
-
+</table>
 
         <?php include 'footer.php'; ?>
 
