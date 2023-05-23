@@ -36,7 +36,7 @@ try {
     while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
         echo "<tr>";
         echo "<td>" . $heading . "</td>";
-        echo "<td>" . $email . "</td>";
+        echo "<td>" . $trip . "</td>";
         echo "<td>" . $duration . "</td>";
         echo "<td>" . $summary . "</td>";
         echo "</tr>";
